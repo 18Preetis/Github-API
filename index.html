@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+  <title>Github API</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<script src="script.js"></script>
+<!-- 
+  Hello this is Advance javascript course. -->
+<form>
+  <input type="text" id="search" autofocus placeholder="Search a Github User here" />
+</form>
+  <main id="main">
+    <div class="card">
+      <div>
+        <img class="avatar">
+      </div>
+      <div class="user-info">
+        <h2>${data.name}</h2>
+        <p>Bio</p>
+
+        <ul class="info">
+          <li>###<strong>Followers</strong></li>
+          <li>###<strong>Following</strong></li>
+          <li>###<strong>Repos</strong></li>
+        </ul>
+
+        <div id="repos">
+          <a class="repo" href
+      </div>
+    </div>
+  </main>
+  
+</body>
+
+ <script>
+// let apikey="3f4607f3ab09418e88978899a0c4a5d4";
+//  const container = document.querySelector(".container"); 
+//     const optionsContainer = document.querySelector(".options-container"); 
+
+//    let requestURL;
+
+//    const generateUI = (articles) =>{};
+
+//    const init =() => {
+//      optionsContainer.innerHTML ="";
+//      getNews();
+//      createOptions();
+//    };
+
+
+//   window.onloads =() =>{
+//     requestURL = `https://newsapi.org/v2/everything?q=Apple&from=2023-10-16&sortBy=popularity&apiKey=${apikey}`;
+//   }
+
+// fetch("https://goweather.herokuapp.com/weather/{city}").then(response => response.json())
+// .then(data => console.log(data))
+//    document.write(data);
+
+   const APIURL="https://api.github.com/users/";
+   const main=document.querySelector("#main");
+
+   const getUser = async(username) => {
+   const response= await fetch(APIURL + username);
+   const data= await response.json()
+     console.log(data)
+   const card =`
+   <div class="card">
+     <div>
+       <img class="avatar" src="${data.avatar_url
+}">
+     </div>
+     <div class="user-info">
+       <h2>${data.name}</h2>
+       
+       
+       <ul class="info">
+         <li>${data.following}<strong>Followers</strong></li>
+         <li>${data.followers}<strong>Following</strong></li>
+         <li>${data.public_repos}<strong>Repos</strong></li>
+       </ul>
+
+     </div>
+   </div>
+   `
+     main.innerHTML= card;
+     getRepos(username)
+   }
+
+   getUser("taylorotwell")
+  
+  const getRepos = async(username) => {
+    const response= await fetch(APIURL + username + "/repos")
+    const data = await response.json();
+    console.log(data)
+    data.forEach(
+      (item) =>{
+        
+      }
+    )
+  }
+
+   
+ </script> 
+
+</html>
